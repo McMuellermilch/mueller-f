@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
 .heading {
   width: 100%;
   text-align: center;
   padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 250%;
 }
