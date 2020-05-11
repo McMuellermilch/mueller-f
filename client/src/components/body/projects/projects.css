@@ -20,4 +20,6 @@
 
 .projects_box_body {
   margin: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
