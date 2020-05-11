@@ -12,7 +12,9 @@ const Project = (props) => {
           <Card.Header>{props.title}</Card.Header>
           <Card.Meta>
             <div className="project_label">
-              <Label color={props.labelColor}>{props.labelText}</Label>
+              <Label size="tiny" color={props.labelColor}>
+                {props.labelText}
+              </Label>
             </div>
           </Card.Meta>
           <Card.Description>{props.description}</Card.Description>
