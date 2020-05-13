@@ -5,6 +5,14 @@ import Project from './project/project';
 
 const Projects = (props) => {
   const [projects, setProjects] = useState([]);
+  const colors = {
+    JavaScript: 'blue',
+    Java: 'brown',
+    Golang: 'teal',
+    Python: 'purple',
+    VisualBasic: 'green',
+    Flutter: 'red',
+  };
 
   useEffect(() => {
     if (projects.length == 0 && props.projectData.length != 0) {
@@ -14,7 +22,7 @@ const Projects = (props) => {
           return (
             <Project
               title={project.name}
-              labelColor="blue"
+              labelColor={colors[project.language]}
               labelText={project.language}
               description={project.description}
             />

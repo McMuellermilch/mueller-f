@@ -7,21 +7,26 @@ import Projects from './projects/projects';
 
 const Body = () => {
   const [projects, setProjects] = useState([]);
-  const [skills, setSKills] = useState([]);
+  const [skills, setSkills] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/projects').then((response) => {
-      console.log(response);
       let responseProjects = response.data.map((project) => {
         return project;
       });
       setProjects(responseProjects);
     });
+    axios.get('http://localhost:5000/api/skills').then((response) => {
+      let responseSkills = response.data.map((skill) => {
+        return skill;
+      });
+      setSkills(responseSkills);
+    });
   }, []);
 
   return (
     <div className="body">
-      <Skills />
+      <Skills skillData={skills} />
       <Projects projectData={projects} />
     </div>
   );
