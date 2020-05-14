@@ -31,7 +31,7 @@ const Project = (props) => {
               })}
             </div>
           </Card.Meta>
-          <Card.Description>{props.description}</Card.Description>
+          <Card.Description>{props.descriptionShort}</Card.Description>
         </Card.Content>
         <Card.Content extra></Card.Content>
       </Card>
@@ -41,16 +41,15 @@ const Project = (props) => {
         closeOnEscape={() => setVisible(false)}
         onClose={() => setVisible(false)}
       >
-        <Modal.Header>Select a Photo</Modal.Header>
-        <Modal.Content image>
-          <Image wrapped size="medium" src="/images/avatar/large/rachel.png" />
+        <Modal.Header>{props.title}</Modal.Header>
+        <Modal.Content>
           <Modal.Description>
-            <Header>Default Profile Image</Header>
-            <p>
-              We've found the following gravatar image associated with your
-              e-mail address.
-            </p>
-            <p>Is it okay to use this photo?</p>
+            <div className="project_tags">
+              {props.tags.map((tag) => {
+                return <Label size="tiny">{tag}</Label>;
+              })}
+            </div>
+            <p>{props.descriptionLong}</p>
           </Modal.Description>
         </Modal.Content>
       </Modal>

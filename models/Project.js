@@ -9,8 +9,16 @@ const schema = mongoose.Schema({
     type: Array,
     unique: false,
   },
-  description: {
+  descriptionShort: {
     type: String,
+    unique: false,
+  },
+  descriptionLong: {
+    type: String,
+    unique: false,
+  },
+  tags: {
+    type: Array,
     unique: false,
   },
 });

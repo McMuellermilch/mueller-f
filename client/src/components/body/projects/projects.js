@@ -15,7 +15,9 @@ const Projects = (props) => {
             <Project
               title={project.name}
               labelText={project.languages}
-              description={project.description}
+              descriptionShort={project.descriptionShort}
+              descriptionLong={project.descriptionLong}
+              tags={project.tags}
             />
           );
         })

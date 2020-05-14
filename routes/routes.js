@@ -92,7 +92,9 @@ router.post('/projects', async (req, res) => {
   const project = new Project({
     name: req.body.name,
     languages: req.body.languages,
-    description: req.body.description,
+    descriptionShort: req.body.descriptionShort,
+    descriptionLong: req.body.descriptionLong,
+    tags: req.body.tags,
   });
   await project.save();
   res.send(project);
@@ -107,12 +109,20 @@ router.patch('/projects/:id', async (req, res) => {
       project.name = req.body.name;
     }
 
-    if (req.body.language) {
-      project.language = req.body.language;
+    if (req.body.languages) {
+      project.languages = req.body.languages;
     }
 
-    if (req.body.description) {
-      project.description = req.body.description;
+    if (req.body.descriptionShort) {
+      project.descriptionShort = req.body.descriptionShort;
+    }
+
+    if (req.body.descriptionLong) {
+      project.descriptionLong = req.body.descriptionLong;
+    }
+
+    if (req.body.tags) {
+      project.tags = req.body.tags;
     }
 
     await project.save();
