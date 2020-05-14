@@ -10,9 +10,10 @@ const Projects = (props) => {
     if (projects.length == 0 && props.projectData.length != 0) {
       console.log(props.projectData);
       setProjects(
-        props.projectData.map((project) => {
+        props.projectData.map((project, index) => {
           return (
             <Project
+              key={index}
               title={project.name}
               labelText={project.languages}
               descriptionShort={project.descriptionShort}

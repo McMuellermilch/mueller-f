@@ -22,9 +22,9 @@ const Project = (props) => {
           <Card.Header>{props.title}</Card.Header>
           <Card.Meta>
             <div className="project_label">
-              {props.labelText.map((language) => {
+              {props.labelText.map((language, index) => {
                 return (
-                  <Label size="tiny" color={colors[language]}>
+                  <Label key={index} size="tiny" color={colors[language]}>
                     {language}
                   </Label>
                 );
@@ -36,17 +36,17 @@ const Project = (props) => {
         <Card.Content extra></Card.Content>
       </Card>
 
-      <Modal
-        open={visible}
-        closeOnEscape={() => setVisible(false)}
-        onClose={() => setVisible(false)}
-      >
+      <Modal open={visible} onClose={() => setVisible(false)}>
         <Modal.Header>{props.title}</Modal.Header>
         <Modal.Content>
           <Modal.Description>
             <div className="project_tags">
-              {props.tags.map((tag) => {
-                return <Label size="tiny">{tag}</Label>;
+              {props.tags.map((tag, index) => {
+                return (
+                  <Label key={index} size="tiny">
+                    {tag}
+                  </Label>
+                );
               })}
             </div>
             <p>{props.descriptionLong}</p>

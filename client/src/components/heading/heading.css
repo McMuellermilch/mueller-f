@@ -7,4 +7,15 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   font-size: 250%;
+
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+}
+
+.heading_title {
+  grid-column: 2;
+}
+
+.heading_mail {
+  grid-column: 3;
 }

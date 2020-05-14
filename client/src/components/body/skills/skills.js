@@ -19,9 +19,10 @@ const Skills = (props) => {
     if (skills.length == 0 && props.skillData.length != 0) {
       console.log(props.skillData);
       setSkills(
-        props.skillData.map((skill) => {
+        props.skillData.map((skill, index) => {
           return (
             <Skill
+              key={index}
               value={skill.level}
               text={skill.name}
               color={colors[skill.name]}
