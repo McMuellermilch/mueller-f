@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+var session = require('express-session');
 
 mongoose
   .connect(process.env.CONNECTIONSTRING, {
@@ -17,6 +18,13 @@ mongoose
     const app = express();
 
     app.use(cors());
+    app.use(
+      session({
+        secret: 'work hard',
+        resave: true,
+        saveUninitialized: false,
+      })
+    );
     app.use(express.static(path.join(__dirname, 'client/build'))); // Serve the static files from the React app
     app.use(bodyParser.json());
     app.use('/api', routes);
