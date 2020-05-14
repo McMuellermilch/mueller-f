@@ -5,8 +5,8 @@ const schema = mongoose.Schema({
     type: String,
     unique: false,
   },
-  language: {
-    type: String,
+  languages: {
+    type: Array,
     unique: false,
   },
   description: {

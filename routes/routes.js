@@ -91,7 +91,7 @@ router.get('/projects/:id', async (req, res) => {
 router.post('/projects', async (req, res) => {
   const project = new Project({
     name: req.body.name,
-    language: req.body.language,
+    languages: req.body.languages,
     description: req.body.description,
   });
   await project.save();

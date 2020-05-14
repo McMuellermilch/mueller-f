@@ -5,6 +5,15 @@ import { Card, Icon, Label } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Project = (props) => {
+  const colors = {
+    JavaScript: 'blue',
+    Java: 'brown',
+    Golang: 'teal',
+    Python: 'purple',
+    VisualBasic: 'green',
+    Flutter: 'red',
+  };
+
   return (
     <div className="project">
       <Card>
@@ -12,9 +21,13 @@ const Project = (props) => {
           <Card.Header>{props.title}</Card.Header>
           <Card.Meta>
             <div className="project_label">
-              <Label size="tiny" color={props.labelColor}>
-                {props.labelText}
-              </Label>
+              {props.labelText.map((language) => {
+                return (
+                  <Label size="tiny" color={colors[language]}>
+                    {language}
+                  </Label>
+                );
+              })}
             </div>
           </Card.Meta>
           <Card.Description>{props.description}</Card.Description>
