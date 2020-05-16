@@ -14,6 +14,7 @@ Desktop.ini
 
 # Misc.
 .env
+.rest
 
 # npm
 node_modules

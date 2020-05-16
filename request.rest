@@ -1,0 +1,12 @@
+GET http://localhost:5000/api/skills
+
+###
+
+POST http://localhost:5000/api/users
+Content-Type: application/json
+
+{
+    "email": "mueller.florian94@outlook.com",
+    "username": "muellboromirusius",
+    "password": "test"
+}
