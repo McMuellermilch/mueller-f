@@ -4,15 +4,21 @@ import 'semantic-ui-css/semantic.min.css';
 
 import Heading from './components/heading/heading';
 import Body from './components/body/body';
+import Login from './components/login/login';
 import Footer from './components/footer/footer';
 
-import { Card, Image } from 'semantic-ui-react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <Heading />
-      <Body />
+      <Router>
+        <div>
+          <Route exact path="/" component={Body} />
+          <Route exact path="/login" component={Login} />
+        </div>
+      </Router>
       <Footer />
     </div>
   );
