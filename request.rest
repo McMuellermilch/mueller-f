@@ -10,3 +10,13 @@ Content-Type: application/json
     "username": "muellboromirusius",
     "password": "test"
 }
+
+###
+
+POST http://localhost:5000/api/users/login
+Content-Type: application/json
+
+{
+    "username": "muellerf",
+    "password": "test123"
+}
