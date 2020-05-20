@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+.login {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.login_content {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.login_title {
+  font-size: 150%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.login_body {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 10px;
+  width: 300px;
+}
+
+.login_body_input {
+  width: 100%;
+}
