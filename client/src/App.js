@@ -2,13 +2,15 @@ import React from 'react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import Heading from './components/heading/heading';
 import Body from './components/body/body';
-import Login from './components/login/login';
+import MgmtLogin from './components/login/login';
 import Footer from './components/footer/footer';
 import { AuthProvider } from './components/Auth';
-
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ManagementConsole from './components/managementConsole/managementConsole';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -18,7 +20,12 @@ function App() {
       <Router>
         <Route exact path="/" component={Body} />
         <AuthProvider>
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/management-login" component={MgmtLogin} />
+          <PrivateRoute
+            exact
+            path="/management-console"
+            component={ManagementConsole}
+          />
         </AuthProvider>
       </Router>
 
