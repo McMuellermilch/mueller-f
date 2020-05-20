@@ -14,14 +14,14 @@ function App() {
   return (
     <div className="App">
       <Heading />
-      <AuthProvider>
-        <Router>
-          <div>
-            <Route exact path="/" component={Body} />
-            <Route exact path="/login" component={Login} />
-          </div>
-        </Router>
-      </AuthProvider>
+
+      <Router>
+        <Route exact path="/" component={Body} />
+        <AuthProvider>
+          <Route exact path="/login" component={Login} />
+        </AuthProvider>
+      </Router>
+
       <Footer />
     </div>
   );
