@@ -11,6 +11,17 @@ const Heading = () => {
   const [email, setEmail] = useState('');
   const [nachricht, setNachricht] = useState('');
 
+  let handleSubmit = () => {
+    let data = {
+      anrede: anrede,
+      vorname: vorname,
+      nachname: nachname,
+      email: email,
+      nachricht: nachricht,
+    };
+    console.log(data);
+  };
+
   return (
     <div className="heading">
       <div className="heading_title">mueller f.</div>
@@ -48,7 +59,9 @@ const Heading = () => {
           </Modal.Content>
           <Modal.Actions>
             <Button negative>Abbrechen</Button>
-            <Button positive>Senden</Button>
+            <Button onClick={handleSubmit} positive>
+              Senden
+            </Button>
           </Modal.Actions>
         </Modal>
       </div>
