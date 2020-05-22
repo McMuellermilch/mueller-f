@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './heading.css';
+import axios from 'axios';
 
 import { Button, Modal, Form, TextArea } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
@@ -20,6 +21,9 @@ const Heading = () => {
       nachricht: nachricht,
     };
     console.log(data);
+    axios.post('http://localhost:5000/api/messages', data).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
