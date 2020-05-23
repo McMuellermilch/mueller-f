@@ -6,6 +6,7 @@ const skillsRoute = require('./routes/skills');
 const projectsRoute = require('./routes/projects');
 const usersRoute = require('./routes/users');
 const messagesRoute = require('./routes/messages');
+const loginRoute = require('./routes/login');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 var session = require('express-session');
@@ -27,6 +28,7 @@ mongoose
     app.use('/api/projects', projectsRoute);
     app.use('/api/users', usersRoute);
     app.use('/api/messages', messagesRoute);
+    app.use('/api/login', loginRoute);
 
     app.get('*', function (_, res) {
       res.sendFile(path.join(__dirname, './client/build/index.html'), function (

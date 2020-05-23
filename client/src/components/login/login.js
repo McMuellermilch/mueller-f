@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './login.css';
 import axios from 'axios';
+import { AuthContext } from '../Auth';
 
 import { Input, Button } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
-const Login = () => {
+const Login = ({ history }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,9 +20,15 @@ const Login = () => {
       .post('http://localhost:5000/api/users/login', data)
       .then((response) => {
         console.log(response);
-        //TODO
-        // history push nach management-console
-        // abgleich ob response == null
+        if (response.status == 200) {
+          axios
+            .post('http://localhost:5000/api/login', {
+              username: response.data.username,
+            })
+            .then((response) => {
+              console.log(response);
+            });
+        }
       });
   };
 
@@ -39,6 +46,7 @@ const Login = () => {
           </div>
           <div className="login_body_input">
             <Input
+              type="password"
               fluid
               placeholder="Passwort..."
               onChange={(event) => setPassword(event.target.value)}
