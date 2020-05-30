@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+.management_console {
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.management_console_header {
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+}
+
+.management_console_header_title {
+  grid-column: 2;
+  font-size: 150%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
+.management_console_header_username {
+  grid-column: 3;
+  font-size: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+}
+
+.management_console_body {
+  grid-row: 2;
+}
