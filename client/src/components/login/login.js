@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import './login.css';
+
 import axios from 'axios';
-import { AuthContext } from '../Auth';
+import { useHistory } from 'react-router-dom';
 
 import { Input, Button } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
-const Login = ({ history }) => {
+const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  let history = useHistory();
 
   const handleSubmit = () => {
     let data = {
@@ -19,15 +22,14 @@ const Login = ({ history }) => {
     axios
       .post('http://localhost:5000/api/users/login', data)
       .then((response) => {
-        console.log(response);
         if (response.status == 200) {
-          axios
-            .post('http://localhost:5000/api/login', {
-              username: response.data.username,
-            })
-            .then((response) => {
-              console.log(response);
-            });
+          console.log(response);
+          props.setCurrentUser({
+            email: response.data.email,
+            username: response.data.username,
+            id: response.data._id,
+          });
+          history.push('/management-console');
         }
       });
   };

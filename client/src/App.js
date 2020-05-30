@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
+import axios from 'axios';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -8,25 +9,29 @@ import Heading from './components/heading/heading';
 import Body from './components/body/body';
 import MgmtLogin from './components/login/login';
 import Footer from './components/footer/footer';
-import { AuthProvider } from './components/Auth';
 import ManagementConsole from './components/managementConsole/managementConsole';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState();
+
   return (
     <div className="App">
       <Heading />
 
       <Router>
         <Route exact path="/" component={Body} />
-        <AuthProvider>
-          <Route exact path="/management-login" component={MgmtLogin} />
-          <PrivateRoute
-            exact
-            path="/management-console"
-            component={ManagementConsole}
-          />
-        </AuthProvider>
+        <Route
+          exact
+          path="/management-login"
+          component={() => <MgmtLogin setCurrentUser={setCurrentUser} />}
+        />
+        <PrivateRoute
+          exact
+          path="/management-console"
+          component={ManagementConsole}
+          currentUser={currentUser}
+        />
       </Router>
 
       <Footer />
