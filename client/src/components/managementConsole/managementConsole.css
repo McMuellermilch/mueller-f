@@ -4,6 +4,7 @@
   text-align: center;
   display: grid;
   grid-template-rows: auto 1fr;
+  gap: 35px;
 }
 
 .management_console_header {

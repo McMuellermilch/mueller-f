@@ -29,3 +29,7 @@ Content-Type: application/json
 {
     "username": "muellerf"
 }
+
+###
+
+GET http://localhost:5000/api/messages

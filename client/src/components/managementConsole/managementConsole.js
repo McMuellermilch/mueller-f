@@ -1,8 +1,7 @@
 import React from 'react';
 import './managementConsole.css';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Input, Button } from 'semantic-ui-react';
+import { Tab } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 import MgmtMessages from './ManagementMessages/ManagementMessages';
@@ -10,6 +9,33 @@ import MgmtProjects from './ManagementProjects/ManagementProjects';
 import MgmtSkills from './ManagementSkills/ManagementSkills';
 
 const ManagementConsole = (props) => {
+  const panes = [
+    {
+      menuItem: 'Messages',
+      render: () => (
+        <Tab.Pane>
+          <MgmtMessages />
+        </Tab.Pane>
+      ),
+    },
+    {
+      menuItem: 'Projects',
+      render: () => (
+        <Tab.Pane>
+          <MgmtProjects />
+        </Tab.Pane>
+      ),
+    },
+    {
+      menuItem: 'Skills',
+      render: () => (
+        <Tab.Pane>
+          <MgmtSkills />
+        </Tab.Pane>
+      ),
+    },
+  ];
+
   return (
     <div className="management_console">
       <div className="management_console_header">
@@ -21,23 +47,7 @@ const ManagementConsole = (props) => {
         </div>
       </div>
       <div className="management_console_body">
-        <Router>
-          <Route
-            exact
-            path="/management-console/messages"
-            component={MgmtMessages}
-          />
-          <Route
-            exact
-            path="/management-console/projects"
-            component={MgmtProjects}
-          />
-          <Route
-            exact
-            path="/management-console/skills"
-            component={MgmtSkills}
-          />
-        </Router>
+        <Tab panes={panes} />
       </div>
     </div>
   );

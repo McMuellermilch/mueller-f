@@ -5,7 +5,7 @@ const router = express.Router();
 //GET ALL
 router.get('/', async (req, res) => {
   const messages = await Message.find();
-  res.send(Message);
+  res.send(messages);
 });
 
 //CREATE
