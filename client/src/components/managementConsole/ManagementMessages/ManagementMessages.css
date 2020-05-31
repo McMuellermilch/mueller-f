@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
 
 .management_messages {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 15px;
+}
+
+.management_messages_title {
+  grid-row: 1;
+  font-size: 120%;
   font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+  font-weight: 200;
+}
+
+.management_messages_body {
+  grid-row: 2;
 }

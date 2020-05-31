@@ -15,10 +15,11 @@ router.post('/', async (req, res) => {
     vorname: req.body.vorname,
     nachname: req.body.nachname,
     email: req.body.email,
+    subject: req.body.subject,
     nachricht: req.body.nachricht,
   });
   await message.save();
-  res.send(message);
+  res.status(200).send(message);
 });
 
 module.exports = router;

@@ -17,6 +17,10 @@ const schema = mongoose.Schema({
     type: String,
     unique: false,
   },
+  subject: {
+    type: String,
+    unique: false,
+  },
   nachricht: {
     type: String,
     unique: false,

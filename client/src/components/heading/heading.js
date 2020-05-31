@@ -6,10 +6,12 @@ import { Button, Modal, Form, TextArea } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Heading = () => {
+  const [visible, setVisible] = useState(false);
   const [anrede, setAnrede] = useState('');
   const [vorname, setVorname] = useState('');
   const [nachname, setNachname] = useState('');
   const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
   const [nachricht, setNachricht] = useState('');
 
   let handleSubmit = () => {
@@ -18,11 +20,14 @@ const Heading = () => {
       vorname: vorname,
       nachname: nachname,
       email: email,
+      subject: subject,
       nachricht: nachricht,
     };
     console.log(data);
     axios.post('http://localhost:5000/api/messages', data).then((response) => {
-      console.log(response);
+      if (response.status == 200) {
+        setVisible(false);
+      }
     });
   };
 
@@ -30,8 +35,14 @@ const Heading = () => {
     <div className="heading">
       <div className="heading_title">mueller f.</div>
       <div className="heading_mail">
-        <Modal trigger={<Button circular color="blue" icon="mail outline" />}>
-          <Modal.Header>Schicken Sie mir 'ne E-Mail!</Modal.Header>
+        <Button
+          circular
+          color="blue"
+          icon="mail outline"
+          onClick={() => setVisible(true)}
+        />
+        <Modal open={visible} onClose={() => setVisible(false)}>
+          <Modal.Header>Schicken Sie mir eine E-Mail!</Modal.Header>
           <Modal.Content>
             <Form>
               <Form.Group widths="equal">
@@ -54,6 +65,10 @@ const Heading = () => {
               <Form.Input
                 placeholder="E-Mail"
                 onChange={(event) => setEmail(event.target.value)}
+              />
+              <Form.Input
+                placeholder="Subject"
+                onChange={(event) => setSubject(event.target.value)}
               />
               <TextArea
                 placeholder="Nachricht"
