@@ -16,3 +16,19 @@
 .management_messages_body {
   grid-row: 2;
 }
+
+.management_messages_body_modal {
+  padding: 10px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 25px;
+}
+
+.management_messages_body_modal_subject {
+  font-size: 120%;
+  padding-left: 10px;
+}
+
+.management_messages_body_modal_message {
+  padding-left: 10px;
+}

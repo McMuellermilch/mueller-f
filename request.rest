@@ -33,3 +33,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:5000/api/messages
+
+###
+
+PATCH http://localhost:5000/api/messages/5ed4090004534c0b09a3ab60

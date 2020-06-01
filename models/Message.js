@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
+  read: {
+    type: Boolean,
+    default: false,
+  },
   anrede: {
     type: String,
     unique: false,

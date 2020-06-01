@@ -22,4 +22,20 @@ router.post('/', async (req, res) => {
   res.status(200).send(message);
 });
 
+//UPDATE READ STATE
+router.patch('/:id', async (req, res) => {
+  console.log(' -- ' + req.params.id);
+  try {
+    const message = await Message.findOne({ _id: req.params.id });
+    console.log(message);
+    message.read = true;
+
+    await message.save();
+    res.status(200).send(message.read);
+  } catch {
+    res.status(404);
+    res.send({ error: 'Nachricht existiert nicht!' });
+  }
+});
+
 module.exports = router;
