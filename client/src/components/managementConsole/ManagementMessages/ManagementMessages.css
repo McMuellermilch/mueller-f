@@ -20,15 +20,30 @@
 .management_messages_body_modal {
   padding: 10px;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto;
   gap: 25px;
 }
 
+.management_messages_body_modal_address {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.management_messages_body_modal_details {
+  grid-row: 1;
+  grid-column: 2;
+}
+
 .management_messages_body_modal_subject {
+  grid-row: 2;
+  grid-column: 1 / -1;
   font-size: 120%;
   padding-left: 10px;
 }
 
 .management_messages_body_modal_message {
+  grid-row: 3;
+  grid-column: 1 / -1;
   padding-left: 10px;
 }

@@ -19,6 +19,8 @@ const ManagementMessages = () => {
     email: '',
     subject: '',
     nachricht: '',
+    createdAt: '',
+    updatedAt: '',
   });
 
   useEffect(() => {
@@ -35,6 +37,8 @@ const ManagementMessages = () => {
             email: message.email,
             subject: message.subject,
             nachricht: message.nachricht,
+            createdAt: message.createdAt,
+            updatedAt: message.updatedAt,
           };
         });
         console.log(messageData);
@@ -54,6 +58,8 @@ const ManagementMessages = () => {
       email: message.email,
       subject: message.subject,
       nachricht: message.nachricht,
+      createdAt: message.createdAt,
+      updatedAt: message.updatedAt,
     });
     setVisible(true);
     axios.patch('http://localhost:5000/api/messages/' + message.id);
@@ -77,8 +83,12 @@ const ManagementMessages = () => {
                   </Card.Content>
                 </Card>
               </div>
+              <div className="management_messages_body_modal_details">
+                <div>Nachricht erhalten: {message.createdAt}</div>
+                <div>Nachricht gelesen: {message.updatedAt}</div>
+              </div>
               <div className="management_messages_body_modal_subject">
-                <strong>{message.subject}</strong>
+                Betreff: <strong>{message.subject}</strong>
               </div>
               <div className="management_messages_body_modal_message">
                 {message.nachricht}
