@@ -11,6 +11,7 @@
   grid-row: 1;
   display: grid;
   grid-template-columns: 200px 1fr 200px;
+  padding: 5px;
 }
 
 .management_console_header_title {
@@ -25,6 +26,7 @@
   font-size: 100%;
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
+  text-align: right;
 }
 
 .management_console_body {

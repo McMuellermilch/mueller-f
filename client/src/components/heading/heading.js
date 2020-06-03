@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import './heading.css';
 import axios from 'axios';
 
+import { useHistory } from 'react-router-dom';
+
 import { Button, Modal, Form, TextArea } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Heading = () => {
+  //const history = useHistory();
+
   const [visible, setVisible] = useState(false);
   const [anrede, setAnrede] = useState('');
   const [vorname, setVorname] = useState('');
@@ -33,7 +37,12 @@ const Heading = () => {
 
   return (
     <div className="heading">
-      <div className="heading_title">mueller f.</div>
+      <div
+        onClick={() => console.log('home route clicked')}
+        className="heading_title"
+      >
+        mueller f.
+      </div>
       <div className="heading_github">
         <a href="https://github.com/McMuellermilch" target="_blank">
           <Button circular color="grey" icon="github" />

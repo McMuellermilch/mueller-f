@@ -1,7 +1,7 @@
 import React from 'react';
 import './managementConsole.css';
 
-import { Tab } from 'semantic-ui-react';
+import { Tab, Label, Icon } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 import MgmtMessages from './ManagementMessages/ManagementMessages';
@@ -43,7 +43,11 @@ const ManagementConsole = (props) => {
           Management Console
         </div>
         <div className="management_console_header_username">
-          {props.username}
+          <Label color="blue" image>
+            <Icon name="user" />
+            Logged in as:
+            <Label.Detail>{props.username}</Label.Detail>
+          </Label>
         </div>
       </div>
       <div className="management_console_body">
