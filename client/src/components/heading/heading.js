@@ -34,6 +34,19 @@ const Heading = () => {
   return (
     <div className="heading">
       <div className="heading_title">mueller f.</div>
+      <div className="heading_github">
+        <a href="https://github.com/McMuellermilch" target="_blank">
+          <Button circular color="grey" icon="github" />
+        </a>
+      </div>
+      <div className="heading_linkedin">
+        <a
+          href="https://www.linkedin.com/in/florian-m%C3%BCller-916269120/"
+          target="_blank"
+        >
+          <Button circular color="linkedin" icon="linkedin" />
+        </a>
+      </div>
       <div className="heading_mail">
         <Button
           circular
