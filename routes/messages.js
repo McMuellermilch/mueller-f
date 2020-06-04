@@ -20,12 +20,34 @@ router.get('/', async (req, res) => {
 //CREATE
 router.post('/', async (req, res) => {
   const mailOptions = {
-    from: process.env.EMAIL, // sender address
-    to: req.body.email, // list of receivers
-    subject: 'Vielen Dank für Ihre Nachricht!', // Subject line
+    from: '"mueller-f" <' + process.env.EMAIL + '>',
+    to: req.body.email,
+    subject: 'Vielen Dank für Ihre Nachricht!',
     //TODO Email Templating for better looking mails
     html:
-      '<div style="text-align:center;"><div>Hallo! Ihre Email ist angekommen - danke dafür! :)</div><div>Ich werde mich schnellstmöglich bei Ihnen melden.</div><div>Freundliche Grüße</div><div>Florian Müller</div></div>', // plain text body
+      '<div style="text-align:center;"><div>Hallo! Ihre Email ist angekommen - danke dafür! :)</div>' +
+      '<div>Ich werde mich schnellstmöglich bei Ihnen melden.</div>' +
+      '<div>Freundliche Grüße</div><div>Florian Müller</div></div>',
+  };
+
+  const notificationOptions = {
+    from: '"mueller-f" <' + process.env.EMAIL + '>',
+    to: process.env.INBOX,
+    subject: '[mueller-f.com]  -  Neue Nachricht!',
+    html:
+      '<div style="padding:5px;"><strong>Von:</strong> ' +
+      req.body.vorname +
+      ' ' +
+      req.body.nachname +
+      ' (' +
+      req.body.email +
+      ')</div>' +
+      '<div style="padding:5px;"><strong>Betreff:</strong> ' +
+      req.body.subject +
+      ' </div>' +
+      '<div style="padding:5px;"><strong>Nachricht:</strong> ' +
+      req.body.nachricht +
+      ' </div>',
   };
 
   const message = new Message({
@@ -40,6 +62,11 @@ router.post('/', async (req, res) => {
   await message.save();
 
   transporter.sendMail(mailOptions, function (err, info) {
+    if (err) console.log(err);
+    else console.log(info);
+  });
+
+  transporter.sendMail(notificationOptions, function (err, info) {
     if (err) console.log(err);
     else console.log(info);
   });

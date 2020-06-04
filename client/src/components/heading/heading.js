@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import './heading.css';
 import axios from 'axios';
 
-import { useHistory } from 'react-router-dom';
-
 import { Button, Modal, Form, TextArea } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Heading = () => {
-  //const history = useHistory();
-
   const [visible, setVisible] = useState(false);
   const [anrede, setAnrede] = useState('');
   const [vorname, setVorname] = useState('');
