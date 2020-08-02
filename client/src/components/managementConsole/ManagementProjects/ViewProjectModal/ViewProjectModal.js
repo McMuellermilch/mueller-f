@@ -19,25 +19,23 @@ const ViewProjectModal = (props) => {
   const projectsEndpoint = 'http://localhost:5000/api/projects';
 
   useEffect(() => {
-    if (name == '' && props.project.name != '') {
-      setName(props.project.name);
-    }
-    if (languagesString == '' && props.project.languages.length != 0) {
-      setLanguagesString(props.project.languages.join(', '));
-    }
-    if (tagsString == '' && props.project.tags.length != 0) {
-      setTagsString(props.project.tags.join(', '));
-    }
-    if (descriptionShort == '' && props.project.descriptionShort != '') {
-      setDescriptionShort(props.project.descriptionShort);
-    }
-    if (descriptionLong == '' && props.project.descriptionLong != '') {
-      setDescriptionLong(props.project.descriptionLong);
-    }
-    if (gitHubLink == '' && props.project.gitHubLink != '') {
-      setGitHubLink(props.project.gitHubLink);
-    }
-  });
+    setName(props.project.name);
+    setLanguagesString(props.project.languages.join(', '));
+    setTagsString(props.project.tags.join(', '));
+    setDescriptionShort(props.project.descriptionShort);
+    setDescriptionLong(props.project.descriptionLong);
+    setGitHubLink(props.project.gitHubLink);
+    console.log(props.project);
+  }, [props]);
+
+  const resetModal = () => {
+    setName('');
+    setLanguagesString('');
+    setTagsString('');
+    setDescriptionShort('');
+    setDescriptionLong('');
+    setGitHubLink('');
+  };
 
   const handleDelete = () => {
     axios.delete(projectsEndpoint + '/' + props.project.id).then((response) => {
@@ -64,7 +62,6 @@ const ViewProjectModal = (props) => {
       descriptionLong: descriptionLong,
       gitHubLink: gitHubLink,
     };
-    console.log(data);
     axios
       .patch(projectsEndpoint + '/' + props.project.id, data)
       .then((response) => {
@@ -78,6 +75,7 @@ const ViewProjectModal = (props) => {
             });
           }, 4000);
           props.update();
+          resetModal();
         }
       });
   };

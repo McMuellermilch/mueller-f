@@ -19,13 +19,18 @@ const AddProjectModal = (props) => {
   const projectsEndpoint = 'http://localhost:5000/api/projects';
 
   useEffect(() => {
-    console.log('name: ' + name);
-    console.log(descriptionShort);
-    console.log(descriptionLong);
+    console.log(gitHubLink);
     console.log(languages);
-    console.log(tags);
-    console.log('ghlink: ' + gitHubLink);
   });
+
+  const resetModal = () => {
+    setName('');
+    setLanguages([]);
+    setTags([]);
+    setDescriptionShort('');
+    setDescriptionLong('');
+    setGitHubLink('');
+  };
 
   const handleSubmit = () => {
     let data = {
@@ -48,6 +53,7 @@ const AddProjectModal = (props) => {
           });
         }, 4000);
         props.update();
+        resetModal();
       }
     });
   };
@@ -112,7 +118,7 @@ const AddProjectModal = (props) => {
             Abbrechen
           </Button>
           <Button onClick={handleSubmit} positive>
-            Senden
+            Speichern
           </Button>
         </Modal.Actions>
       </Modal>
