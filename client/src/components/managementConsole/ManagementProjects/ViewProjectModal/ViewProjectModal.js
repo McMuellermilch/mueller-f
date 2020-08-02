@@ -14,12 +14,11 @@ const ViewProjectModal = (props) => {
   const [tagsString, setTagsString] = useState(''); // String represention of array in order to be placed inside the Input field
   const [descriptionShort, setDescriptionShort] = useState('');
   const [descriptionLong, setDescriptionLong] = useState('');
+  const [gitHubLink, setGitHubLink] = useState('');
 
   const projectsEndpoint = 'http://localhost:5000/api/projects';
 
   useEffect(() => {
-    console.log(languagesString);
-
     if (name == '' && props.project.name != '') {
       setName(props.project.name);
     }
@@ -34,6 +33,9 @@ const ViewProjectModal = (props) => {
     }
     if (descriptionLong == '' && props.project.descriptionLong != '') {
       setDescriptionLong(props.project.descriptionLong);
+    }
+    if (gitHubLink == '' && props.project.gitHubLink != '') {
+      setGitHubLink(props.project.gitHubLink);
     }
   });
 
@@ -60,6 +62,7 @@ const ViewProjectModal = (props) => {
       tags: tagsString.split(', '),
       descriptionShort: descriptionShort,
       descriptionLong: descriptionLong,
+      gitHubLink: gitHubLink,
     };
     console.log(data);
     axios
@@ -116,6 +119,15 @@ const ViewProjectModal = (props) => {
               placeholder="Kurze Beschreibung"
               value={descriptionShort}
               onChange={(e) => setDescriptionShort(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              label="GitHub Link"
+              placeholder="GitHub Link"
+              value={gitHubLink}
+              onChange={(e) => setGitHubLink(e.target.value)}
             />
           </Form.Group>
           <Form.Group widths="equal">

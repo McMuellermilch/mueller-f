@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './project.css';
 
-import { Card, Modal, Label, Header, Image } from 'semantic-ui-react';
+import { Card, Modal, Label, Header, Icon } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Project = (props) => {
@@ -12,7 +12,7 @@ const Project = (props) => {
     Golang: 'teal',
     Python: 'purple',
     VisualBasic: 'green',
-    Flutter: 'red',
+    Dart: 'red',
   };
 
   return (
@@ -33,24 +33,43 @@ const Project = (props) => {
           </Card.Meta>
           <Card.Description>{props.descriptionShort}</Card.Description>
         </Card.Content>
-        <Card.Content extra></Card.Content>
+        {props.gitHubLink != '' ? (
+          <Card.Content extra>
+            Code on <Icon name="github" />
+          </Card.Content>
+        ) : (
+          ''
+        )}
       </Card>
 
       <Modal open={visible} onClose={() => setVisible(false)}>
         <Modal.Header>{props.title}</Modal.Header>
+
         <Modal.Content>
           <Modal.Description>
-            <div className="project_tags">
-              {props.tags.map((tag, index) => {
-                return (
-                  <Label key={index} size="tiny">
-                    {tag}
-                  </Label>
-                );
-              })}
-            </div>
-            <p>{props.descriptionLong}</p>
+            {props.gitHubLink != '' ? (
+              <a href={props.gitHubLink} target="_blank">
+                <Label color="blue" image>
+                  Open Source
+                  <Label.Detail>
+                    view code on <Icon name="github" />
+                  </Label.Detail>
+                </Label>
+              </a>
+            ) : (
+              ''
+            )}
           </Modal.Description>
+          <div className="project_tags">
+            {props.tags.map((tag, index) => {
+              return (
+                <Label key={index} size="tiny">
+                  {tag}
+                </Label>
+              );
+            })}
+          </div>
+          <p className="project_description">{props.descriptionLong}</p>
         </Modal.Content>
       </Modal>
     </div>

@@ -21,6 +21,10 @@ const schema = mongoose.Schema({
     type: Array,
     unique: false,
   },
+  gitHubLink: {
+    type: String,
+    unique: false,
+  },
 });
 
 module.exports = mongoose.model('Project', schema);

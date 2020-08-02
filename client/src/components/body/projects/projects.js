@@ -8,7 +8,6 @@ const Projects = (props) => {
 
   useEffect(() => {
     if (projects.length == 0 && props.projectData.length != 0) {
-      console.log(props.projectData);
       setProjects(
         props.projectData.map((project, index) => {
           return (
@@ -19,6 +18,7 @@ const Projects = (props) => {
               descriptionShort={project.descriptionShort}
               descriptionLong={project.descriptionLong}
               tags={project.tags}
+              gitHubLink={project.gitHubLink}
             />
           );
         })

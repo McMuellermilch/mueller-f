@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ManagementProjects.css';
 import axios from 'axios';
 
-import { Table, Button, Modal, Card } from 'semantic-ui-react';
+import { Table, Button, Modal, Label } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 import AddProjectModal from './AddProjectModal/AddProjectModal';
@@ -21,19 +21,30 @@ const ManagementProjects = () => {
     descriptionShort: '',
     descriptionLong: '',
     tags: [],
+    gitHubLink: '',
   });
+
+  const colors = {
+    JavaScript: 'blue',
+    Java: 'brown',
+    Golang: 'teal',
+    Python: 'purple',
+    VisualBasic: 'green',
+    Dart: 'red',
+  };
 
   const fetchProjectData = () => {
     axios.get(projectsEndpoint).then((response) => {
-      const projectData = response.data.map((message, index) => {
+      const projectData = response.data.map((project, index) => {
         return {
           index: index,
-          id: message._id,
-          name: message.name,
-          languages: message.languages,
-          descriptionShort: message.descriptionShort,
-          descriptionLong: message.descriptionLong,
-          tags: message.tags,
+          id: project._id,
+          name: project.name,
+          languages: project.languages,
+          descriptionShort: project.descriptionShort,
+          descriptionLong: project.descriptionLong,
+          tags: project.tags,
+          gitHubLink: project.gitHubLink,
         };
       });
       setProjects(projectData);
@@ -55,6 +66,7 @@ const ManagementProjects = () => {
       descriptionShort: project.descriptionShort,
       descriptionLong: project.descriptionLong,
       tags: project.tags,
+      gitHubLink: project.gitHubLink,
     });
     setVisible(true);
   };
@@ -90,6 +102,7 @@ const ManagementProjects = () => {
             <Table.Row>
               <Table.HeaderCell></Table.HeaderCell>
               <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Sprachen</Table.HeaderCell>
               <Table.HeaderCell>Kurzbeschreibung</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -106,6 +119,15 @@ const ManagementProjects = () => {
                     />
                   </Table.Cell>
                   <Table.Cell>{project.name}</Table.Cell>
+                  <Table.Cell>
+                    {project.languages.map((language, index) => {
+                      return (
+                        <Label key={index} size="tiny" color={colors[language]}>
+                          {language}
+                        </Label>
+                      );
+                    })}
+                  </Table.Cell>
                   <Table.Cell>{project.descriptionShort}</Table.Cell>
                 </Table.Row>
               );

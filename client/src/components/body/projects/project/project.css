@@ -7,5 +7,9 @@
 }
 
 .project_tags {
-  margin-bottom: 15px;
+  margin: 15px 0px 15px 0px;
+}
+
+.project_description {
+  white-space: pre-wrap;
 }

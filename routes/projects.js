@@ -21,12 +21,14 @@ router.get('/:id', async (req, res) => {
 
 //CREATE
 router.post('/', async (req, res) => {
+  console.log(req.body);
   const project = new Project({
     name: req.body.name,
     languages: req.body.languages,
     descriptionShort: req.body.descriptionShort,
     descriptionLong: req.body.descriptionLong,
     tags: req.body.tags,
+    gitHubLink: req.body.gitHubLink,
   });
   await project.save();
   res.send(project);
@@ -34,10 +36,9 @@ router.post('/', async (req, res) => {
 
 //UPDATE
 router.patch('/:id', async (req, res) => {
-  console.log('id: ' + req.params.id);
   try {
     const project = await Project.findOne({ _id: req.params.id });
-    console.log(project);
+
     if (req.body.name) {
       project.name = req.body.name;
     }
@@ -56,6 +57,10 @@ router.patch('/:id', async (req, res) => {
 
     if (req.body.tags) {
       project.tags = req.body.tags;
+    }
+
+    if (req.body.gitHubLink) {
+      project.gitHubLink = req.body.gitHubLink;
     }
 
     await project.save();

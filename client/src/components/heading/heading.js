@@ -85,7 +85,7 @@ const Heading = () => {
                 onChange={(event) => setEmail(event.target.value)}
               />
               <Form.Input
-                placeholder="Subject"
+                placeholder="Betreff"
                 onChange={(event) => setSubject(event.target.value)}
               />
               <TextArea
@@ -95,7 +95,9 @@ const Heading = () => {
             </Form>
           </Modal.Content>
           <Modal.Actions>
-            <Button negative>Abbrechen</Button>
+            <Button onClick={() => setVisible(false)} negative>
+              Abbrechen
+            </Button>
             <Button onClick={handleSubmit} positive>
               Senden
             </Button>

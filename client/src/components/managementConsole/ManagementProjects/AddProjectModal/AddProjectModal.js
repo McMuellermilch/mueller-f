@@ -14,6 +14,7 @@ const AddProjectModal = (props) => {
   const [tags, setTags] = useState([]);
   const [descriptionShort, setDescriptionShort] = useState('');
   const [descriptionLong, setDescriptionLong] = useState('');
+  const [gitHubLink, setGitHubLink] = useState('');
 
   const projectsEndpoint = 'http://localhost:5000/api/projects';
 
@@ -23,6 +24,7 @@ const AddProjectModal = (props) => {
     console.log(descriptionLong);
     console.log(languages);
     console.log(tags);
+    console.log('ghlink: ' + gitHubLink);
   });
 
   const handleSubmit = () => {
@@ -32,6 +34,7 @@ const AddProjectModal = (props) => {
       descriptionShort: descriptionShort,
       descriptionLong: descriptionLong,
       tags: tags,
+      gitHubLink: gitHubLink,
     };
     console.log(data);
     axios.post(projectsEndpoint, data).then((response) => {
@@ -84,6 +87,14 @@ const AddProjectModal = (props) => {
                 label="Kurze Beschreibung"
                 placeholder="Kurze Beschreibung"
                 onChange={(e) => setDescriptionShort(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Input
+                fluid
+                label="GitHub Link"
+                placeholder="GitHub Link"
+                onChange={(e) => setGitHubLink(e.target.value)}
               />
             </Form.Group>
             <Form.Group widths="equal">
