@@ -26,6 +26,15 @@ Content-Type: application/json
 
 ###
 
+PATCH http://localhost:5000/api/projects/5f2669db6c32b077bbfb66b6
+Content-Type: application/json
+
+{
+    "name": "BOOOOOYYYYY"
+}
+
+###
+
 POST http://localhost:5000/api/users/login
 Content-Type: application/json
 

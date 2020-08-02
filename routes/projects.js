@@ -34,9 +34,10 @@ router.post('/', async (req, res) => {
 
 //UPDATE
 router.patch('/:id', async (req, res) => {
-  console.log(req.params.id);
+  console.log('id: ' + req.params.id);
   try {
     const project = await Project.findOne({ _id: req.params.id });
+    console.log(project);
     if (req.body.name) {
       project.name = req.body.name;
     }
@@ -58,7 +59,7 @@ router.patch('/:id', async (req, res) => {
     }
 
     await project.save();
-    res.send(post);
+    res.status(200).send('updated');
   } catch {
     res.status(404);
     res.send({ error: 'Project existiert nicht!' });
@@ -69,10 +70,10 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     await Project.deleteOne({ _id: req.params.id });
-    res.status(204).send('deleted');
+    res.status(200).send('deleted');
   } catch {
     res.status(404);
-    res.send({ error: 'Skill existiert nicht!' });
+    res.send({ error: 'Projekt existiert nicht!' });
   }
 });
 

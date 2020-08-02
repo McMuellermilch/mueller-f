@@ -6,6 +6,7 @@ import { Table, Button, Modal, Card } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 import AddProjectModal from './AddProjectModal/AddProjectModal';
+import ViewProjectModal from './ViewProjectModal/ViewProjectModal';
 
 const projectsEndpoint = 'http://localhost:5000/api/projects';
 
@@ -22,24 +23,26 @@ const ManagementProjects = () => {
     tags: [],
   });
 
+  const fetchProjectData = () => {
+    axios.get(projectsEndpoint).then((response) => {
+      const projectData = response.data.map((message, index) => {
+        return {
+          index: index,
+          id: message._id,
+          name: message.name,
+          languages: message.languages,
+          descriptionShort: message.descriptionShort,
+          descriptionLong: message.descriptionLong,
+          tags: message.tags,
+        };
+      });
+      setProjects(projectData);
+    });
+  };
+
   useEffect(() => {
     if (projects.length == 0) {
-      axios.get(projectsEndpoint).then((response) => {
-        console.log(response);
-        const projectData = response.data.map((message, index) => {
-          return {
-            index: index,
-            id: message._id,
-            name: message.name,
-            languages: message.languages,
-            descriptionShort: message.descriptionShort,
-            descriptionLong: message.descriptionLong,
-            tags: message.tags,
-          };
-        });
-        console.log(projectData);
-        setProjects(projectData);
-      });
+      fetchProjectData();
     }
   });
 
@@ -67,18 +70,21 @@ const ManagementProjects = () => {
             icon="plus"
             onClick={() => setVisibleAdd(true)}
           />
-          <AddProjectModal visible={visibleAdd} setVisible={setVisibleAdd} />
+          <AddProjectModal
+            visible={visibleAdd}
+            setVisible={setVisibleAdd}
+            update={fetchProjectData}
+          />
         </div>
       </div>
 
       <div className="management_projects_body">
-        <Modal open={visible} onClose={() => setVisible(false)}>
-          <Modal.Header>{project.name}</Modal.Header>
-          <Modal.Content>
-            <div>coming soon...</div>
-          </Modal.Content>
-          <Modal.Actions></Modal.Actions>
-        </Modal>
+        <ViewProjectModal
+          visible={visible}
+          project={project}
+          setVisible={setVisible}
+          update={fetchProjectData}
+        />
         <Table selectable celled size="small">
           <Table.Header>
             <Table.Row>
