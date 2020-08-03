@@ -69,9 +69,7 @@ const Project = (props) => {
               );
             })}
           </div>
-          <p className="project_description">
-            {formatSubstring(props.descriptionLong)}
-          </p>
+          <p className="project_description">{props.descriptionLong}</p>
         </Modal.Content>
       </Modal>
     </div>
