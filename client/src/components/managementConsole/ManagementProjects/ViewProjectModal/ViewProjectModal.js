@@ -25,7 +25,6 @@ const ViewProjectModal = (props) => {
     setDescriptionShort(props.project.descriptionShort);
     setDescriptionLong(props.project.descriptionLong);
     setGitHubLink(props.project.gitHubLink);
-    console.log(props.project);
   }, [props]);
 
   const resetModal = () => {

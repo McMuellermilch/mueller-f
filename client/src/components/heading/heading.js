@@ -37,7 +37,7 @@ const Heading = () => {
         onClick={() => console.log('home route clicked')}
         className="heading_title"
       >
-        mueller f.
+        ˈmʏlɐ-ɛf
       </div>
       <div className="heading_github">
         <a href="https://github.com/McMuellermilch" target="_blank">

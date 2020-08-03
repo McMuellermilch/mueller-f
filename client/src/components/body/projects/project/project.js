@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './project.css';
 
-import { Card, Modal, Label, Header, Icon } from 'semantic-ui-react';
+import { Card, Modal, Label, Icon } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Project = (props) => {
@@ -69,7 +69,9 @@ const Project = (props) => {
               );
             })}
           </div>
-          <p className="project_description">{props.descriptionLong}</p>
+          <p className="project_description">
+            {formatSubstring(props.descriptionLong)}
+          </p>
         </Modal.Content>
       </Modal>
     </div>
