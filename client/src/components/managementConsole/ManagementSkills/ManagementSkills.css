@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+.management_skills {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 15px;
+}
+
+.management_skills_heading {
+  grid-row: 1;
+
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+}
+
+.management_skills_title {
+  grid-column: 2;
+  font-size: 120%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+}
+
+.management_skills_body {
+  grid-row: 2;
+}

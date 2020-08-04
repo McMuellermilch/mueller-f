@@ -37,8 +37,6 @@ function App() {
           currentUser={currentUser}
         />
       </Router>
-
-      <Footer />
     </div>
   );
 }
