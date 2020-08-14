@@ -1,6 +1,6 @@
 # ˈmʏlɐ-ɛf
 
-## Code for [my personal website](https://mueller-f.herokuapp.com/)
+## Code for [mueller-f.com](https://www.mueller-f.com)
 
 My personal website serves as a portfolio for my work as a developer
 
@@ -22,4 +22,4 @@ Framework: [ExpressJS](https://expressjs.com/de/)
 
 ### Hosting
 
-[Herokku](https://www.heroku.com/)
+[Heroku](https://www.heroku.com/)
