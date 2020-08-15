@@ -7,7 +7,7 @@ import 'react-circular-progressbar/dist/styles.css';
 
 import ViewSkillModal from './ViewSkillModal/ViewSkillModal';
 
-const skillsEndpoint = 'http://localhost:5000/api/skills';
+const skillsEndpoint = 'api/skills';
 
 const ManagementSkills = () => {
   const [skills, setSkills] = useState([]);

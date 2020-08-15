@@ -10,13 +10,13 @@ const Body = () => {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/projects').then((response) => {
+    axios.get('api/projects').then((response) => {
       let responseProjects = response.data.map((project) => {
         return project;
       });
       setProjects(responseProjects);
     });
-    axios.get('http://localhost:5000/api/skills').then((response) => {
+    axios.get('api/skills').then((response) => {
       let responseSkills = response.data.map((skill) => {
         return skill;
       });

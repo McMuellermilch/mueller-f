@@ -13,11 +13,7 @@ import ManagementConsole from './components/managementConsole/managementConsole'
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({
-    username: 'muellefl',
-    password: 'test1222',
-    email: 'mueller.florian99@outlook.com',
-  });
+  const [currentUser, setCurrentUser] = useState();
 
   return (
     <div className="App">

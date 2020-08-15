@@ -16,7 +16,7 @@ const AddProjectModal = (props) => {
   const [descriptionLong, setDescriptionLong] = useState('');
   const [gitHubLink, setGitHubLink] = useState('');
 
-  const projectsEndpoint = 'http://localhost:5000/api/projects';
+  const projectsEndpoint = 'api/projects';
 
   useEffect(() => {
     console.log(gitHubLink);

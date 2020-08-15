@@ -8,7 +8,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import AddProjectModal from './AddProjectModal/AddProjectModal';
 import ViewProjectModal from './ViewProjectModal/ViewProjectModal';
 
-const projectsEndpoint = 'http://localhost:5000/api/projects';
+const projectsEndpoint = 'api/projects';
 
 const ManagementProjects = () => {
   const [projects, setProjects] = useState([]);
