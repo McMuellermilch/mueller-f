@@ -24,7 +24,7 @@ const Heading = () => {
       nachricht: nachricht,
     };
     console.log(data);
-    axios.post('http://localhost:5000/api/messages', data).then((response) => {
+    axios.post('api/messages', data).then((response) => {
       if (response.status == 200) {
         setVisible(false);
       }
