@@ -1,7 +1,7 @@
 import React from 'react';
 import './managementConsole.css';
 
-import { Tab, Label, Icon } from 'semantic-ui-react';
+import { Tab, Label, Icon, Dropdown } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 import MgmtMessages from './ManagementMessages/ManagementMessages';
