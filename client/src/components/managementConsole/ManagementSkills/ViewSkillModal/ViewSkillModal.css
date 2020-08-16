@@ -1,0 +1,15 @@
+.modal_content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.modal_content_form {
+  grid-column: 1;
+}
+
+.modal_content_stats {
+  grid-column: 2;
+  width: 180px;
+  height: 180px;
+  place-self: center;
+}

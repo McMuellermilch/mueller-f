@@ -56,7 +56,11 @@ const ManagementSkills = () => {
         <div className="management_skills_title">Skills</div>
       </div>
       <div className="management_skills_body">
-        <ViewSkillModal />
+        <ViewSkillModal
+          visible={visible}
+          skill={skill}
+          setVisible={setVisible}
+        />
         <Table selectable celled size="small">
           <Table.Header>
             <Table.Row>
@@ -70,7 +74,12 @@ const ManagementSkills = () => {
               return (
                 <Table.Row>
                   <Table.Cell collapsing>
-                    <Button circular color="blue" icon="edit outline" />
+                    <Button
+                      circular
+                      color="blue"
+                      icon="edit outline"
+                      onClick={() => openModal(skill.id)}
+                    />
                   </Table.Cell>
                   <Table.Cell>{skill.name}</Table.Cell>
                   <Table.Cell>{skill.level}</Table.Cell>
