@@ -9,6 +9,10 @@ const schema = mongoose.Schema({
     type: String,
     unique: false,
   },
+  color: {
+    type: String,
+    unique: false,
+  },
 });
 
 module.exports = mongoose.model('Skill', schema);

@@ -1,0 +1,13 @@
+.add_skill {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.add_skill_form {
+  grid-column: 1;
+}
+
+.add_skill_color {
+  grid-column: 2;
+  place-self: center;
+}

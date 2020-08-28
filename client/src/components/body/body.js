@@ -27,7 +27,7 @@ const Body = () => {
   return (
     <div className="body">
       <Skills skillData={skills} />
-      <Projects projectData={projects} />
+      <Projects projectData={projects} skillData={skills} />
     </div>
   );
 };

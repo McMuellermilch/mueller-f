@@ -6,6 +6,7 @@ import { Table, Button, Modal, Label } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 import ViewSkillModal from './ViewSkillModal/ViewSkillModal';
+import AddSkillModal from './AddSkillModal/AddSkillModal';
 
 const skillsEndpoint = 'api/skills';
 
@@ -54,6 +55,15 @@ const ManagementSkills = () => {
     <div className="management_skills">
       <div className="management_skills_heading">
         <div className="management_skills_title">Skills</div>
+        <div className="management_skills_add">
+          <Button
+            circular
+            color="blue"
+            icon="plus"
+            onClick={() => setVisibleAdd(true)}
+          />
+          <AddSkillModal visible={visibleAdd} setVisible={setVisibleAdd} />
+        </div>
       </div>
       <div className="management_skills_body">
         <ViewSkillModal

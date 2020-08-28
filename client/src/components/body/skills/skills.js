@@ -6,15 +6,6 @@ import Skill from './skill/skill';
 const Skills = (props) => {
   const [skills, setSkills] = useState([]);
 
-  const colors = {
-    JS: '#2185D0',
-    Java: '#A5673F',
-    Golang: '#00B5AD',
-    Python: '#A333C9',
-    VBA: '#21BA45',
-    Flutter: '#DB2829',
-  };
-
   useEffect(() => {
     if (skills.length == 0 && props.skillData.length != 0) {
       console.log(props.skillData);
@@ -25,7 +16,7 @@ const Skills = (props) => {
               key={index}
               value={skill.level}
               text={skill.name}
-              color={colors[skill.name]}
+              color={skill.color}
             />
           );
         })

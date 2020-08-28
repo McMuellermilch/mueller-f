@@ -24,6 +24,7 @@ router.post('/', async (req, res) => {
   const skill = new Skill({
     name: req.body.name,
     level: req.body.level,
+    color: req.body.color,
   });
   await skill.save();
   res.send(skill);
@@ -40,6 +41,10 @@ router.patch('/:id', async (req, res) => {
 
     if (req.body.level) {
       skill.level = req.body.level;
+    }
+
+    if (req.body.color) {
+      skill.color = req.body.color;
     }
 
     await skill.save();

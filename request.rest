@@ -59,3 +59,14 @@ GET http://localhost:5000/api/messages
 ###
 
 PATCH http://localhost:5000/api/messages/5ed4090004534c0b09a3ab60
+
+###
+
+POST http://localhost:5000/api/skills
+Content-Type: application/json
+
+{
+    "name": "Dart",
+    "level": "35",
+    "color": "#48dbfb"
+}

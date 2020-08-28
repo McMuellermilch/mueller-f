@@ -12,6 +12,7 @@ const Skill = (props) => {
         styles={buildStyles({
           textColor: props.color,
           pathColor: props.color,
+          textSize: '17px',
         })}
       />
     </div>

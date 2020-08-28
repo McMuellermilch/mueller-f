@@ -24,7 +24,11 @@ const Project = (props) => {
             <div className="project_label">
               {props.labelText.map((language, index) => {
                 return (
-                  <Label key={index} size="tiny" color={colors[language]}>
+                  <Label
+                    key={index}
+                    size="tiny"
+                    style={{ backgroundColor: props.labelColor }}
+                  >
                     {language}
                   </Label>
                 );
