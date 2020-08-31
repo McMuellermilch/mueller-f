@@ -5,6 +5,18 @@
 
 .modal_content_form {
   grid-column: 1;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 30px;
+}
+
+.modal_content_form_input {
+  grid-row: 1;
+}
+
+.modal_content_form_color {
+  grid-row: 2;
+  place-self: center;
 }
 
 .modal_content_stats {

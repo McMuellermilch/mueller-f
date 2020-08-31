@@ -4,6 +4,9 @@ import './managementConsole.css';
 import { Tab, Label, Icon, Dropdown } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
+import { SemanticToastContainer } from 'react-semantic-toasts';
+import 'react-semantic-toasts/styles/react-semantic-alert.css';
+
 import MgmtMessages from './ManagementMessages/ManagementMessages';
 import MgmtProjects from './ManagementProjects/ManagementProjects';
 import MgmtSkills from './ManagementSkills/ManagementSkills';
@@ -51,6 +54,7 @@ const ManagementConsole = (props) => {
         </div>
       </div>
       <div className="management_console_body">
+        <SemanticToastContainer />
         <Tab panes={panes} />
       </div>
     </div>

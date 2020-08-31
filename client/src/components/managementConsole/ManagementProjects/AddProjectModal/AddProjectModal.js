@@ -18,11 +18,6 @@ const AddProjectModal = (props) => {
 
   const projectsEndpoint = 'api/projects';
 
-  useEffect(() => {
-    console.log(gitHubLink);
-    console.log(languages);
-  });
-
   const resetModal = () => {
     setName('');
     setLanguages([]);
@@ -41,7 +36,7 @@ const AddProjectModal = (props) => {
       tags: tags,
       gitHubLink: gitHubLink,
     };
-    console.log(data);
+
     axios.post(projectsEndpoint, data).then((response) => {
       if (response.status == 200) {
         props.setVisible(false);
@@ -59,70 +54,67 @@ const AddProjectModal = (props) => {
   };
 
   return (
-    <>
-      <SemanticToastContainer />
-      <Modal open={props.visible} onClose={() => props.setVisible(false)}>
-        <Modal.Header>Neues Projekt hinzufügen</Modal.Header>
-        <Modal.Content>
-          <Form>
-            <Form.Group widths="equal">
-              <Form.Input
-                fluid
-                label="Name"
-                placeholder="Name"
-                onChange={(e) => setName(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Input
-                fluid
-                label="Sprachen"
-                placeholder="Sprachen"
-                onChange={(e) => setLanguages(e.target.value.split(', '))}
-              />
-              <Form.Input
-                fluid
-                label="Tags"
-                placeholder="Tags"
-                onChange={(e) => setTags(e.target.value.split(', '))}
-              />
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Input
-                fluid
-                label="Kurze Beschreibung"
-                placeholder="Kurze Beschreibung"
-                onChange={(e) => setDescriptionShort(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.Input
-                fluid
-                label="GitHub Link"
-                placeholder="GitHub Link"
-                onChange={(e) => setGitHubLink(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group widths="equal">
-              <Form.TextArea
-                fluid
-                label="Beschreibung"
-                placeholder="Beschreibung"
-                onChange={(e) => setDescriptionLong(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button onClick={() => props.setVisible(false)} negative>
-            Abbrechen
-          </Button>
-          <Button onClick={handleSubmit} positive>
-            Speichern
-          </Button>
-        </Modal.Actions>
-      </Modal>
-    </>
+    <Modal open={props.visible} onClose={() => props.setVisible(false)}>
+      <Modal.Header>Neues Projekt hinzufügen</Modal.Header>
+      <Modal.Content>
+        <Form>
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              label="Name"
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              label="Sprachen"
+              placeholder="Sprachen"
+              onChange={(e) => setLanguages(e.target.value.split(', '))}
+            />
+            <Form.Input
+              fluid
+              label="Tags"
+              placeholder="Tags"
+              onChange={(e) => setTags(e.target.value.split(', '))}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              label="Kurze Beschreibung"
+              placeholder="Kurze Beschreibung"
+              onChange={(e) => setDescriptionShort(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Input
+              fluid
+              label="GitHub Link"
+              placeholder="GitHub Link"
+              onChange={(e) => setGitHubLink(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.TextArea
+              fluid
+              label="Beschreibung"
+              placeholder="Beschreibung"
+              onChange={(e) => setDescriptionLong(e.target.value)}
+            />
+          </Form.Group>
+        </Form>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button onClick={() => props.setVisible(false)} negative>
+          Abbrechen
+        </Button>
+        <Button onClick={handleSubmit} positive>
+          Speichern
+        </Button>
+      </Modal.Actions>
+    </Modal>
   );
 };
 

@@ -35,6 +35,7 @@ router.patch('/:id', async (req, res) => {
   console.log(req.params.id);
   try {
     const skill = await Skill.findOne({ _id: req.params.id });
+
     if (req.body.name) {
       skill.name = req.body.name;
     }
@@ -48,7 +49,7 @@ router.patch('/:id', async (req, res) => {
     }
 
     await skill.save();
-    res.send(post);
+    res.status(200).send('updated');
   } catch {
     res.status(404);
     res.send({ error: 'Skill existiert nicht!' });

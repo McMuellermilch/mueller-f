@@ -18,9 +18,10 @@ const ManagementSkills = () => {
     id: '',
     name: '',
     level: '',
+    color: '',
   });
 
-  const fetchProjectData = () => {
+  const fetchSkillData = () => {
     axios.get(skillsEndpoint).then((response) => {
       console.log(response);
       const skillsData = response.data.map((skill, index) => {
@@ -29,6 +30,7 @@ const ManagementSkills = () => {
           id: skill._id,
           name: skill.name,
           level: skill.level,
+          color: skill.color,
         };
       });
       setSkills(skillsData);
@@ -37,7 +39,7 @@ const ManagementSkills = () => {
 
   useEffect(() => {
     if (skills.length == 0) {
-      fetchProjectData();
+      fetchSkillData();
     }
   });
 
@@ -47,6 +49,7 @@ const ManagementSkills = () => {
       id: skill.id,
       name: skill.name,
       level: skill.level,
+      color: skill.color,
     });
     setVisible(true);
   };
@@ -62,7 +65,11 @@ const ManagementSkills = () => {
             icon="plus"
             onClick={() => setVisibleAdd(true)}
           />
-          <AddSkillModal visible={visibleAdd} setVisible={setVisibleAdd} />
+          <AddSkillModal
+            visible={visibleAdd}
+            setVisible={setVisibleAdd}
+            update={fetchSkillData}
+          />
         </div>
       </div>
       <div className="management_skills_body">
@@ -70,6 +77,7 @@ const ManagementSkills = () => {
           visible={visible}
           skill={skill}
           setVisible={setVisible}
+          update={fetchSkillData}
         />
         <Table selectable celled size="small">
           <Table.Header>

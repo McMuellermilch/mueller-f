@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Form, Button, Modal } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
-import { SemanticToastContainer, toast } from 'react-semantic-toasts';
+import { toast } from 'react-semantic-toasts';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
 
 const ViewProjectModal = (props) => {
