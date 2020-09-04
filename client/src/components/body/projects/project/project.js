@@ -16,14 +16,14 @@ const Project = (props) => {
     return item;
   };
 
-  function getContrastYIQ(hexcolor) {
+  const getContrastYIQ = (hexcolor) => {
     hexcolor = hexcolor.replace('#', '');
     var r = parseInt(hexcolor.substr(0, 2), 16);
     var g = parseInt(hexcolor.substr(2, 2), 16);
     var b = parseInt(hexcolor.substr(4, 2), 16);
     var yiq = (r * 299 + g * 587 + b * 114) / 1000;
     return yiq >= 128 ? 'black' : 'white';
-  }
+  };
 
   return (
     <div className="project">
@@ -92,7 +92,7 @@ const Project = (props) => {
               );
             })}
           </div>
-          <p className="project_description">{props.descriptionLong}</p>
+          <div className="project_description">{props.descriptionLong}</div>
         </Modal.Content>
       </Modal>
     </div>

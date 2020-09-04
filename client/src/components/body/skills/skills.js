@@ -8,7 +8,6 @@ const Skills = (props) => {
 
   useEffect(() => {
     if (skills.length == 0 && props.skillData.length != 0) {
-      console.log(props.skillData);
       setSkills(
         props.skillData.map((skill, index) => {
           return (

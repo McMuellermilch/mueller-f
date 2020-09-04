@@ -9,9 +9,11 @@ import AddProjectModal from './AddProjectModal/AddProjectModal';
 import ViewProjectModal from './ViewProjectModal/ViewProjectModal';
 
 const projectsEndpoint = 'api/projects';
+const skillEndpoint = 'api/skills';
 
 const ManagementProjects = () => {
   const [projects, setProjects] = useState([]);
+  const [skills, setSkills] = useState([]);
   const [visible, setVisible] = useState(false);
   const [visibleAdd, setVisibleAdd] = useState(false);
   const [project, setProject] = useState({
@@ -23,15 +25,6 @@ const ManagementProjects = () => {
     tags: [],
     gitHubLink: '',
   });
-
-  const colors = {
-    JavaScript: 'blue',
-    Java: 'brown',
-    Golang: 'teal',
-    Python: 'purple',
-    VisualBasic: 'green',
-    Dart: 'red',
-  };
 
   const fetchProjectData = () => {
     axios.get(projectsEndpoint).then((response) => {
@@ -51,11 +44,51 @@ const ManagementProjects = () => {
     });
   };
 
+  const fetchSkillData = () => {
+    axios.get(skillEndpoint).then((response) => {
+      const skillData = response.data.map((skill, index) => {
+        return {
+          index: index,
+          name: skill.name,
+          color: skill.color,
+        };
+      });
+      setSkills(skillData);
+    });
+  };
+
   useEffect(() => {
     if (projects.length == 0) {
       fetchProjectData();
     }
+    if (skills.length == 0) {
+      fetchSkillData();
+    }
+
+    console.log(skills);
   });
+
+  const getColor = (name) => {
+    console.log('lang name in getColor: ' + name);
+    let item = null;
+    if (skills.length != 0) {
+      skills.find((elem, index) => {
+        if (elem.name == name) {
+          item = elem.color;
+        }
+      });
+    }
+    return item;
+  };
+
+  const getContrastYIQ = (hexcolor) => {
+    hexcolor = hexcolor.replace('#', '');
+    var r = parseInt(hexcolor.substr(0, 2), 16);
+    var g = parseInt(hexcolor.substr(2, 2), 16);
+    var b = parseInt(hexcolor.substr(4, 2), 16);
+    var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+    return yiq >= 128 ? 'black' : 'white';
+  };
 
   const openModal = (id) => {
     const project = projects.find((element) => element.id == id);
@@ -121,8 +154,20 @@ const ManagementProjects = () => {
                   <Table.Cell>{project.name}</Table.Cell>
                   <Table.Cell>
                     {project.languages.map((language, index) => {
+                      let item = getColor(language);
+                      let color = '#222f3e';
+                      if (item != undefined) {
+                        color = item;
+                      }
                       return (
-                        <Label key={index} size="tiny" color={colors[language]}>
+                        <Label
+                          key={index}
+                          size="tiny"
+                          style={{
+                            backgroundColor: color,
+                            color: getContrastYIQ(color),
+                          }}
+                        >
                           {language}
                         </Label>
                       );
