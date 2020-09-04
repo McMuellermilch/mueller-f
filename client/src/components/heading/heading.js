@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import './heading.css';
 import axios from 'axios';
 
+import Logo from './message_sent_icon.svg';
+
 import { Button, Modal, Form, TextArea } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Heading = () => {
   const [visible, setVisible] = useState(false);
+  const [confirmVisible, setConfirmVisible] = useState(false);
   const [anrede, setAnrede] = useState('');
   const [vorname, setVorname] = useState('');
   const [nachname, setNachname] = useState('');
@@ -23,9 +26,10 @@ const Heading = () => {
       subject: subject,
       nachricht: nachricht,
     };
-    console.log(data);
+
     axios.post('api/messages', data).then((response) => {
       if (response.status == 200) {
+        setConfirmVisible(true);
         setVisible(false);
       }
     });
@@ -100,6 +104,30 @@ const Heading = () => {
             </Button>
             <Button onClick={handleSubmit} positive>
               Senden
+            </Button>
+          </Modal.Actions>
+        </Modal>
+        <Modal
+          open={confirmVisible}
+          onClose={() => setConfirmVisible(false)}
+          size="small"
+        >
+          <Modal.Header>Vielen Dank für Ihre E-Mail!</Modal.Header>
+          <Modal.Content>
+            <div className="mail_container">
+              <div className="mail_image_container">
+                <img className="mail_image" src={Logo} alt="" />
+              </div>
+            </div>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button
+              positive
+              onClick={() => {
+                setConfirmVisible(false);
+              }}
+            >
+              Ok!
             </Button>
           </Modal.Actions>
         </Modal>
