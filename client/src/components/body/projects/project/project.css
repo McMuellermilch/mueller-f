@@ -6,14 +6,15 @@
   margin-top: 5px;
 }
 
-.project_tags {
-  margin: 15px 0px 15px 0px;
-}
-
 .project_description {
+  margin-top: 15px;
   white-space: pre-wrap;
 }
 
 .card_style {
   min-height: 180px !important;
+}
+
+.project_opensource_label {
+  margin-bottom: 15px;
 }

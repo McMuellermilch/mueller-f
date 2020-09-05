@@ -71,19 +71,21 @@ const Project = (props) => {
         <Modal.Content>
           <Modal.Description>
             {props.gitHubLink != '' ? (
-              <a href={props.gitHubLink} target="_blank">
-                <Label color="blue" image>
-                  Open Source
-                  <Label.Detail>
-                    view code on <Icon name="github" />
-                  </Label.Detail>
-                </Label>
-              </a>
+              <div className="project_opensource_label">
+                <a href={props.gitHubLink} target="_blank">
+                  <Label color="blue" image>
+                    Open Source
+                    <Label.Detail>
+                      view code on <Icon name="github" />
+                    </Label.Detail>
+                  </Label>
+                </a>
+              </div>
             ) : (
               ''
             )}
           </Modal.Description>
-          <div className="project_tags">
+          <div>
             {props.tags.map((tag, index) => {
               return (
                 <Label key={index} size="tiny">
