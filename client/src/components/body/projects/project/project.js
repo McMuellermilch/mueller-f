@@ -27,7 +27,7 @@ const Project = (props) => {
 
   return (
     <div className="project">
-      <Card onClick={() => setVisible(true)}>
+      <Card className="card_style" onClick={() => setVisible(true)}>
         <Card.Content>
           <Card.Header>{props.title}</Card.Header>
           <Card.Meta>

@@ -13,3 +13,7 @@
 .project_description {
   white-space: pre-wrap;
 }
+
+.card_style {
+  min-height: 180px !important;
+}
