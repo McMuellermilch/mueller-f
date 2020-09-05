@@ -6,6 +6,12 @@
   margin-top: 5px;
 }
 
+.project_description_short {
+  margin-top: 15px;
+  white-space: pre-wrap;
+  font-weight: bold;
+}
+
 .project_description {
   margin-top: 15px;
   white-space: pre-wrap;
@@ -16,5 +22,5 @@
 }
 
 .project_opensource_label {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }

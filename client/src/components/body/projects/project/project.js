@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './project.css';
 
-import { Card, Modal, Label, Icon } from 'semantic-ui-react';
+import { Card, Modal, Label, Icon, Divider } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 const Project = (props) => {
@@ -34,7 +34,7 @@ const Project = (props) => {
             <div className="project_label">
               {props.labelText.map((language, index) => {
                 let item = getColor(language);
-                let color = '#222f3e';
+                let color = '#34495e';
                 if (item != undefined) {
                   color = item.color;
                 }
@@ -87,13 +87,29 @@ const Project = (props) => {
           </Modal.Description>
           <div>
             {props.tags.map((tag, index) => {
+              let item = getColor(tag);
+              let color = '#34495e';
+              if (item != undefined) {
+                color = item.color;
+              }
               return (
-                <Label key={index} size="tiny">
+                <Label
+                  key={index}
+                  size="tiny"
+                  style={{
+                    backgroundColor: color,
+                    color: getContrastYIQ(color),
+                  }}
+                >
                   {tag}
                 </Label>
               );
             })}
           </div>
+          <div className="project_description_short">
+            {props.descriptionShort}
+          </div>
+          <Divider />
           <div className="project_description">{props.descriptionLong}</div>
         </Modal.Content>
       </Modal>
