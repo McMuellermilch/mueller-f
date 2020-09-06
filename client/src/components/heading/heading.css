@@ -64,14 +64,24 @@ a {
 }
 
 .mail_container {
-  place-self: center;
+  text-align: center !important;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 25px;
+}
+
+.mail_text_container {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
 .mail_image_container {
+  grid-row: 2;
   place-self: center;
   height: 300px;
 }
 
 .mail_image {
   height: 100%;
+  place-self: center;
 }

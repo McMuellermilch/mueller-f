@@ -115,6 +115,10 @@ const Heading = () => {
           <Modal.Header>Vielen Dank für Ihre E-Mail!</Modal.Header>
           <Modal.Content>
             <div className="mail_container">
+              <div>
+                Ich habe Ihre E-Mail erhalten und werde mich schnellstmöglich
+                bei Ihnen melden!
+              </div>
               <div className="mail_image_container">
                 <img className="mail_image" src={Logo} alt="" />
               </div>

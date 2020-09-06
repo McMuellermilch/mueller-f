@@ -7,66 +7,15 @@ Content-Type: application/json
 
 {
     "email": "mueller.florian94@outlook.com",
-    "username": "muellboromirusius",
-    "password": "test"
+    "username": "testusr",
+    "password": "tst445"
 }
 
 ###
 
-POST http://localhost:5000/api/projects
+POST http://localhost:5000/api/messages
 Content-Type: application/json
 
 {
-    "name": "Karl Mueller Asia",
-    "languages": "JavaScript",
-    "descriptionShort": "Der komplette Webauftritt der Firma Karl Mueller Asia",
-    "descriptionLong": "text hier",
-    "tags": "Javascript"
-}
-
-###
-
-PATCH http://localhost:5000/api/projects/5f2669db6c32b077bbfb66b6
-Content-Type: application/json
-
-{
-    "name": "BOOOOOYYYYY"
-}
-
-###
-
-POST http://localhost:5000/api/users/login
-Content-Type: application/json
-
-{
-    "username": "muellerf",
-    "password": "test123"
-}
-
-###
-
-POST http://localhost:5000/api/login
-Content-Type: application/json
-
-{
-    "username": "muellerf"
-}
-
-###
-
-GET http://localhost:5000/api/messages
-
-###
-
-PATCH http://localhost:5000/api/messages/5ed4090004534c0b09a3ab60
-
-###
-
-POST http://localhost:5000/api/skills
-Content-Type: application/json
-
-{
-    "name": "Dart",
-    "level": "35",
-    "color": "#48dbfb"
+    "email": "test@mail.xy"
 }
