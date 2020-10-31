@@ -8,7 +8,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { toast } from 'react-semantic-toasts';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
 
-const messagesEndpoint = 'http://localhost:5000/api/messages';
+const messagesEndpoint = 'api/messages';
 
 const ManagementMessages = () => {
   const [messages, setMessages] = useState([]);
