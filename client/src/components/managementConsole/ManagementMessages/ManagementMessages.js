@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ManagementMessages.css';
 import axios from 'axios';
 
-import { Table, Button, Modal, Card } from 'semantic-ui-react';
+import { Table, Button, Modal, Card, Divider } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
 import { toast } from 'react-semantic-toasts';
@@ -130,7 +130,12 @@ const ManagementMessages = () => {
                 Betreff: <strong>{message.subject}</strong>
               </div>
               <div className="management_messages_body_modal_message">
-                {message.nachricht}
+              <Card fluid>
+                  <Card.Content>
+                  {message.nachricht}
+                  </Card.Content>
+                </Card>
+                
               </div>
             </div>
           </Modal.Content>

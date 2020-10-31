@@ -6,7 +6,7 @@ import Project from './project/project';
 const Projects = (props) => {
   return (
     <div className="projects">
-      <div className="projects_box_heading">Projects</div>
+      <div className="projects_box_heading">Pro·jek·te</div>
       <div className="projects_box_body">
         {props.projectData.map((project, index) => {
           return (

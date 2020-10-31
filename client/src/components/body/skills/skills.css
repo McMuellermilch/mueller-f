@@ -25,3 +25,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
+
+.skills_box_footnote {
+  font-size: 70%;
+  font-weight: 100;
+  color: dimgray;
+  margin: 0 10px 0 10px;
+}

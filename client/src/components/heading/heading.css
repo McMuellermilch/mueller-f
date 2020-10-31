@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
 .heading {
   width: 100%;
   text-align: center;
   padding: 10px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 250%;
 
   display: grid;

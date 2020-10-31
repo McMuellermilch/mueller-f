@@ -25,8 +25,9 @@ const Skills = (props) => {
 
   return (
     <div className="skills">
-      <div className="skills_box_heading">Skills</div>
+      <div className="skills_box_heading">Kennt·nis·se</div>
       <div className="skills_box_body">{skills}</div>
+      <div className="skills_box_footnote">Selbsteinschätzung meines Kenntnisstandes auf einer Skala von 0 bis 100%</div>
     </div>
   );
 };
