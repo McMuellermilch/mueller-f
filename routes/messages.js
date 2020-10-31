@@ -74,4 +74,16 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
+//DELETE
+router.delete('/:id', async (req, res) => {
+  console.log(req.params.id);
+  try {
+    await Message.deleteOne({ _id: req.params.id });
+    res.status(204).send('deleted');
+  } catch {
+    res.status(404);
+    res.send({ error: 'Nachricht existiert nicht!' });
+  }
+});
+
 module.exports = router;

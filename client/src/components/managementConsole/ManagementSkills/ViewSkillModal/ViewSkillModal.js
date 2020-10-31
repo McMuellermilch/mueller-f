@@ -46,7 +46,7 @@ const ViewSkillModal = (props) => {
             title: 'Skill gelöscht! :)',
             description: 'Der Skill wurde erfolgreich gelöscht',
           });
-        }, 4000);
+        }, 1000);
         props.update();
       }
     });

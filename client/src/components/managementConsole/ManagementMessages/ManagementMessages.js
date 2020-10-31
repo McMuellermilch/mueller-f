@@ -5,6 +5,9 @@ import axios from 'axios';
 import { Table, Button, Modal, Card } from 'semantic-ui-react';
 import 'react-circular-progressbar/dist/styles.css';
 
+import { toast } from 'react-semantic-toasts';
+import 'react-semantic-toasts/styles/react-semantic-alert.css';
+
 const messagesEndpoint = 'http://localhost:5000/api/messages';
 
 const ManagementMessages = () => {
@@ -23,27 +26,30 @@ const ManagementMessages = () => {
     updatedAt: '',
   });
 
+  const fetchMessageData = () => {
+    axios.get(messagesEndpoint).then((response) => {
+      console.log(response);
+      const messageData = response.data.map((message, index) => {
+        return {
+          id: message._id,
+          read: message.read,
+          anrede: message.anrede,
+          vorname: message.vorname,
+          nachname: message.nachname,
+          email: message.email,
+          subject: message.subject,
+          nachricht: message.nachricht,
+          createdAt: message.createdAt,
+          updatedAt: message.updatedAt,
+        };
+      });
+      setMessages(messageData);
+    });
+  };
+
   useEffect(() => {
     if (messages.length == 0) {
-      axios.get(messagesEndpoint).then((response) => {
-        console.log(response);
-        const messageData = response.data.map((message, index) => {
-          return {
-            id: message._id,
-            read: message.read,
-            anrede: message.anrede,
-            vorname: message.vorname,
-            nachname: message.nachname,
-            email: message.email,
-            subject: message.subject,
-            nachricht: message.nachricht,
-            createdAt: message.createdAt,
-            updatedAt: message.updatedAt,
-          };
-        });
-        console.log(messageData);
-        setMessages(messageData);
-      });
+      fetchMessageData();
     }
   });
 
@@ -61,9 +67,29 @@ const ManagementMessages = () => {
       createdAt: message.createdAt,
       updatedAt: message.updatedAt,
     });
+    axios.patch('http://localhost:5000/api/messages/' + message.id).then(response => {
+      console.log(response.status)
+    });
+    fetchMessageData();
     setVisible(true);
-    axios.patch('http://localhost:5000/api/messages/' + message.id);
   };
+
+  const handleDelete = () => {
+    console.log(message.id)
+    axios.delete(messagesEndpoint + '/' + message.id).then((response) => {
+      if (response.status == 204) {
+        setTimeout(() => {
+          toast({
+            type: 'success',
+            title: 'Nachricht gelöscht! :)',
+            description: 'Die Nachricht wurde erfolgreich gelöscht',
+          });
+        }, 1000);
+        fetchMessageData();
+        setVisible(false);
+      }
+    });
+  }
 
   return (
     <div className="management_messages">
@@ -95,7 +121,10 @@ const ManagementMessages = () => {
               </div>
             </div>
           </Modal.Content>
-          <Modal.Actions></Modal.Actions>
+          <Modal.Actions>
+            <Button onClick={() => setVisible(false)} variant="contained" color="primary">Abbrechen</Button>
+            <Button onClick={handleDelete} variant="contained" color="primary">Löschen</Button>
+          </Modal.Actions>
         </Modal>
         <Table selectable celled size="small">
           <Table.Header>
