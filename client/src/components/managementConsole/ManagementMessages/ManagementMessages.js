@@ -26,10 +26,21 @@ const ManagementMessages = () => {
     updatedAt: '',
   });
 
+  const toDateString = (datestring) => {
+    //2020-08-15 T  17:18:06.171Z
+    const year = datestring.substring(0, 4);
+    const month = datestring.substring(5, 7);
+    const day = datestring.substring(8, 10);
+    const hour = datestring.substring(11, 13);
+    const minute = datestring.substring(14, 16);
+    return `${day}.${month}.${year} | ${hour}:${minute}`
+  }
+
   const fetchMessageData = () => {
     axios.get(messagesEndpoint).then((response) => {
       console.log(response);
       const messageData = response.data.map((message, index) => {
+        console.log(message.createdAt.toString());
         return {
           id: message._id,
           read: message.read,
@@ -110,8 +121,10 @@ const ManagementMessages = () => {
                 </Card>
               </div>
               <div className="management_messages_body_modal_details">
-                <div>Nachricht erhalten: {message.createdAt}</div>
-                <div>Nachricht gelesen: {message.updatedAt}</div>
+                <div className="label">Erhalten:</div>
+                <div className="time">{toDateString(message.createdAt)}</div>
+                <div className="label">Gelesen:</div>
+                <div className="time">{toDateString(message.updatedAt)}</div>
               </div>
               <div className="management_messages_body_modal_subject">
                 Betreff: <strong>{message.subject}</strong>
@@ -122,8 +135,8 @@ const ManagementMessages = () => {
             </div>
           </Modal.Content>
           <Modal.Actions>
-            <Button onClick={() => setVisible(false)} variant="contained" color="primary">Abbrechen</Button>
-            <Button onClick={handleDelete} variant="contained" color="primary">Löschen</Button>
+            <Button onClick={() => setVisible(false)}>Abbrechen</Button>
+            <Button onClick={handleDelete} color="red">Löschen</Button>
           </Modal.Actions>
         </Modal>
         <Table selectable celled size="small">

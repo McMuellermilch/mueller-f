@@ -33,6 +33,22 @@
 .management_messages_body_modal_details {
   grid-row: 1;
   grid-column: 2;
+  justify-self: end;
+  padding: 7px;
+
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px;
+}
+
+.label {
+  align-self: center;
+}
+
+.time {
+  align-self: center;
+  justify-self: start;
 }
 
 .management_messages_body_modal_subject {
@@ -46,4 +62,5 @@
   grid-row: 3;
   grid-column: 1 / -1;
   padding-left: 10px;
+  white-space: pre-wrap;
 }

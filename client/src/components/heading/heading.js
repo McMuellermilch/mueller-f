@@ -85,14 +85,17 @@ const Heading = () => {
                 />
               </Form.Group>
               <Form.Input
+              fluid
                 placeholder="E-Mail"
                 onChange={(event) => setEmail(event.target.value)}
               />
               <Form.Input
+              fluid
                 placeholder="Betreff"
                 onChange={(event) => setSubject(event.target.value)}
               />
               <TextArea
+              fluid
                 placeholder="Nachricht"
                 onChange={(event) => setNachricht(event.target.value)}
               />
